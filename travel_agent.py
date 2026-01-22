@@ -4,6 +4,7 @@ import os
 import time
 from uuid import UUID
 import dotenv
+dotenv.load_dotenv()
 from strands_tools.code_interpreter import AgentCoreCodeInterpreter
 
 from strands import tool
@@ -11,9 +12,10 @@ from strands.models.bedrock import BedrockModel
 from strands.session.file_session_manager import FileSessionManager
 import boto3
 from strands import Agent
+
 #Enable Monocle Tracing
 from monocle_apptrace import setup_monocle_telemetry
-
+setup_monocle_telemetry(workflow_name = 'aws_agentcore_strands_travel_agent')
 
 @tool
 def book_flight_tool(from_airport: str, to_airport: str, date:str):
@@ -63,9 +65,7 @@ def get_scores(message: str):
     return response.message['content'][0]['text']
 
 if __name__ == "__main__":
-    dotenv.load_dotenv()
-    setup_monocle_telemetry(workflow_name = 'aws_strands_travel_agent')
-    nba_agent = setup_agents()
+    travel_agent = setup_agents()
     while True:
         try:
             user_request = input("\nHey, How can I help you with travel booking? ")
@@ -74,7 +74,7 @@ if __name__ == "__main__":
         if user_request.lower() in ["exit", "quit", ""]:
             print("Exiting the Travel scores agent. Goodbye!")
             break
-        response = nba_agent(prompt=user_request)
+        response = travel_agent(prompt=user_request)
         #get list of all environment variables
         envs:str = ""
 

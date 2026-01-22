@@ -1,8 +1,7 @@
 from bedrock_agentcore.memory.integrations.strands.config import AgentCoreMemoryConfig, RetrievalConfig
 from bedrock_agentcore.memory.integrations.strands.session_manager import AgentCoreMemorySessionManager
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
-#from travel_agent import setup_agents
-from nba_agent import setup_agents
+from travel_agent import setup_agents
 import os
 import logging
 
@@ -11,7 +10,7 @@ log = app.logger
 MEMORY_ID = os.getenv("BEDROCK_AGENTCORE_MEMORY_ID")
 REGION = os.getenv("AWS_REGION")
 from monocle_apptrace import setup_monocle_telemetry
-setup_monocle_telemetry(workflow_name = 'agc_travel_agent_wf')
+setup_monocle_telemetry(workflow_name = 'travel_agent_aws_agc')
 
 @app.entrypoint
 async def invoke(payload, context):

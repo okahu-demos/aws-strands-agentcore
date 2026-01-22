@@ -1,7 +1,5 @@
---extra-index-url https://okahu.jfrog.io/artifactory/api/pypi/okahu-patch-pypi/simple
 strands-agents
 strands-agents-tools
-nba_api
 bedrock-agentcore
 bedrock-agentcore-starter-toolkit
 monocle_apptrace
