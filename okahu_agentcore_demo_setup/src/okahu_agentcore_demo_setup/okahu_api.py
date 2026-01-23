@@ -71,7 +71,6 @@ class OkahuAPI:
             dict: The discovery response details.
         """
         url = f"{self.api_url}/v1/discover/architecture/apps/{app_name.replace(' ', '_').lower()}"
-        print(url)
         headers = self.headers
 
         response = requests.put(url, headers=headers)

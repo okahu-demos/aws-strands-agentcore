@@ -1,6 +1,6 @@
 import os
 from time import sleep
-from .demo_setup import setup_okahu, setup_agentcore_config, deploy_agentcore, okahu_discovery, run_agent_test, get_trace_url
+from .demo_setup import setup_okahu, setup_agentcore_config, deploy_agentcore, okahu_discovery, run_agent_test, get_trace_url, update_dot_env
 
 def main():
     #check if first argument is --key, then set the OKAHU_API_KEY environment variable
@@ -28,12 +28,14 @@ def main():
     print("Testing agent deployment...")
     run_agent_test()
     print("Agent test completed.")
-    sleep(1)
+    sleep(2)
 
     # Step 5: Trigger Okahu discovery
     print("Updating Okahu tenant")
-    sleep(2)
     okahu_discovery()
+
+    # Step 6: Update .env for local runs
+    update_dot_env()
     print("Okahu update completed!!")
 
     print(os.linesep + "Demo setup completed successfully.")

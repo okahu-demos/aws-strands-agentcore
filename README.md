@@ -3,13 +3,14 @@ This demo includes a mock travel agent that accepts flight and travel booking re
 
 ## Pre-requesits
 - AWS [Bedrock] with LLM deployed (https://docs.aws.amazon.com/bedrock/latest/userguide/getting-started.html).
-- AWS [Agentcore](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/agentcore-get-started-toolkit.html)
-- AWS credentials
+- AWS [Agentcore](https://aws.amazon.com/bedrock/agentcore/) enabled for you tenant.
+  - Please chyeck to AWS portal and documentation to confirm that the service is available for your tenant and the region.
+- AWS credentials configured locally.
   - Run `aws sts get-caller-identity` to check if you already have configured AWS credentials for AWS CLI tools
     - The output of that command should show Userid if the auth is configured.
-  - If not these value can be obtained by running AWS CLI commend `aws sts get-session-token` or `aws login`. Please refer to these [steps](https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html) from AWS.
+  - If not then, these value can be obtained by running AWS CLI commend `aws sts get-session-token` or `aws login`. Please refer to these [AWS CLI configuration steps](https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-files.html).
 - Okahu cloud account
-  - Signup Okahu on portal.okahu.co
+  - Sign up for Okahu on portal.okahu.co to get limited capacity single user account for free.
 - Okahu API key
   - Login to portal.okahu.co
   - goto https://portal.okahu.co/settings
