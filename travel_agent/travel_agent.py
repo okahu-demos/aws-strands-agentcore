@@ -41,19 +41,22 @@ def setup_agents(session_manager = None, session_id= None) -> Agent:
     boto_session = boto3.Session()
     model = BedrockModel(boto_session=boto_session, streaming=False)
 
+    tools = [book_flight_tool, book_hotel_tool]
+    if os.environ.get("AGENTCORE_RUNTIME_URL"):
     # Create code interpreter
-    code_interpreter = AgentCoreCodeInterpreter(
-        session_name=session_id,
-        auto_create=True,
-        persist_sessions=True
-    )
+        code_interpreter = AgentCoreCodeInterpreter(
+            session_name=session_id,
+            auto_create=True,
+            persist_sessions=True
+        )
+        tools.append(code_interpreter)
 
     travel_agent = Agent(name="agc_travel_agent", model=model,
                 system_prompt= """
                     You are a travel booking agent. You handle flight and hotel booking requests from user. 
                     If anything else is asked then just say 'sorry I can't help with that'
                     """,
-                    tools = [code_interpreter, book_flight_tool, book_hotel_tool],
+                    tools = tools,
                     description="Travel agent", callback_handler=None,
                     session_manager=session_manager
                 )
