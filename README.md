@@ -5,7 +5,9 @@ Agent example to provide travel booking implemented with AWS Strands
 - AWS [Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/getting-started.html) with foundational text LLMs enabled.
 - AWS [Agentcore](https://aws.amazon.com/bedrock/agentcore/)
   - Verify that AgentCore is available in your tenant and region for deployment. Refer to Agentcore [FAQ](https://aws.amazon.com/bedrock/agentcore/faqs/)
-- AWS credentials- This value can be obtained by running AWS CLI commend aws sts get-session-token
+- AWS credentials
+  - This value can be obtained by running AWS CLI commend aws sts get-session-token. For more options please refer to AWS [instructions](https://docs.aws.amazon.com/cli/v1/userguide/cli-chap-authentication.html) on CLI auth.
+
 - Okahu cloud account
   - Signup on portal.okahu.co
 - Okahu API key
