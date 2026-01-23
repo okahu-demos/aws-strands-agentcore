@@ -1,5 +1,5 @@
-# AWS Strands agent 
-Agent example to provide travel booking implemented with AWS Strands
+# AWS Strands agent in AWS Agentcore
+This demo includes a mock travel agent that accepts flight and travel booking requests. The agent code is implemented using AWS Strands agentic framework. The demo scripts helps you to deploy this agent in AWS Agentcore service. The agent is enabled to generate [Monocle](monocle2ai.org) traces and send those to [Okahu cloud](www.okahu.ai).
 
 ## Prerequisites
 - AWS [Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/getting-started.html) with foundational text LLMs enabled.
@@ -23,10 +23,7 @@ Agent example to provide travel booking implemented with AWS Strands
   - Go to https://portal.okahu.co/settings
   - Generate API key and copy it
 
-## Deploy demo agent to AWS Agentcore
-- Copy bedrock_agentcore_template.yaml to .bedrock_agentcore.yaml
-- Edit .bedrock_agentcore.yaml
-  - Replace `<REPO_PATH>` with absolute path where you have this demo stored.
+## Setup demo environment
 - Start a command line shell
   - Create a Python virtual environment
     - `python -m venv .venv`
@@ -35,39 +32,22 @@ Agent example to provide travel booking implemented with AWS Strands
     - On Windows (Git Bash): `source .venv/bin/activate`
     - On Windows (Command Prompt): `.venv\Scripts\activate.bat`
     - On Windows (PowerShell): `.venv\Scripts\Activate.ps1`
-  - Install dependencies in your python environment
-    - `pip install -r requirements.txt`
-  - Deploy agent to AWS Agentcore
-    - `agentcore deploy --env AWS_ACCESS_KEY_ID=<VALUE> --env AWS_SECRET_ACCESS_KEY=<VALUE> --env AWS_REGION=us-west-2 --env MONOCLE_EXPORTER=okahu --env OKAHU_API_KEY=<okahu-api-key>`
-  - Verify that deploy is successful
-    - Run `agentcore status`
-    - Verify that the output contains message `Ready - Agent deployed and endpoint available`
+- Install dependencies in your python environment
+  - `pip install -r requirements.txt`
+- Run Okahu demo setup tool. This will deploy demo agent to AWS Agentcore and setup Okahu tenant for consuming traces from that deployment.
+  - ```okahu_agentcore_demo_setup --key <OKAHU-API-KEY>```
+  - Verify that you see `Demo setup completed successfully` at the end
 
 ## Test the agent
-- Go to Agentcore [Sandbox](https://us-east-1.console.aws.amazon.com/bedrock-agentcore/playground)
+
+### Test in Agentcore Sandbox in cloud
+- Goto Agentcore [Sandbox](https://us-east-1.console.aws.amazon.com/bedrock-agentcore/playground)
 - Enter the test prompt in the `Input` field - `Book a flight from San Jose to Seattle for 30 March 2026`
   - ![Bedrock Sandbox](media/agentcore_playground.png)
-
-## Initial Okahu setup for the agent demo
-The steps below need to be done only for the first time for the agent demo.
-- Log in to [Okahu portal](https://portal.okahu.co)
-- Click on the `Components` tab
-- Click `Discover Workflows` button
-  - ![Discover workflows](media/discover_workflow.png)
-  - Wait till you see `One new workflow discovered` message
-- Search for the new workflow `aws_agentcore_strands_travel_agent`
-  - ![Search workflow ](media/Search_new_workflow.png)
-- Click on the `aws_agentcore_strands_travel_agent` workflow tile. This will take you to the workflow details page.
-- Click on `Add application` button and type new application name `AgentCore Travel Agent`
-  - ![Add application to workflow](media/add_application.png)
-  - Click Enter
-- Now a new Okahu application `AgentCore Travel Agent` is created and will be listed on the workflow tab
-  - ![New application](media/new_app_link.png)
-- Click on the `AgentCore Travel Agent` link to get redirected to the application page
-- Click on the `Architecture` tab
-  - ![Architecture](media/arch.png)
-- Click on `Discovery` button. This will detect the components used by the agent and build the architecture view
-  - ![Agent architecture](media/agent_architecture.png)
+### Test locally using Agentcore CLI tool
+- Start command shell and source python env
+- Run Agentcore CLI command
+  - `agentcore invoke '{"prompt": "<prompt>"}'`
 
 ## View agent traces in Okahu
 - Log in to [Okahu portal](https://portal.okahu.co)
@@ -79,20 +59,17 @@ The steps below need to be done only for the first time for the agent demo.
   - ![Traces ](media/traces.png)
 
 ## Try out tests framework example for the travel agent app
-- Copy env.template to .env
-- Add following to .env
-  - Okahu API key
-- Create a Python virtual environment
-  - `python -m venv .venv`
-- Activate the virtual environment
-  - On macOS/Linux: `source .venv/bin/activate`
-  - On Windows (Git Bash): `source .venv/bin/activate`
-  - On Windows (Command Prompt): `.venv\Scripts\activate.bat`
-  - On Windows (PowerShell): `.venv\Scripts\Activate.ps1`
+- Start a command line shell
+  - Create a Python virtual environment
+    - `python -m venv .venv`
+  - Activate the virtual environment
+    - On macOS/Linux: `source .venv/bin/activate`
+    - On Windows (Git Bash): `source .venv/bin/activate`
+    - On Windows (Command Prompt): `.venv\Scripts\activate.bat`
+    - On Windows (PowerShell): `.venv\Scripts\Activate.ps1`
+- Source python env
 - Install python dependencies
   - `pip install -r requirements.txt`
-- Install python dependencies
-  - `pip install -r test/requirements.txt`
 - Run pytest
   - `pytest -vv test/test_travel_agent.py`
 
