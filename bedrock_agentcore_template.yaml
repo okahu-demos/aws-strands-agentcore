@@ -1,10 +1,10 @@
 default_agent: okahu_demo_Agent
 agents:
-  okahu_Agent:
-    name: okahu_Agent
+  okahu_demo_Agent:
+    name: okahu_demo_Agent
     entrypoint: <REPO_PATH>/agent_runner.py
     deployment_type: direct_code_deploy
-    runtime_type: PYTHON_3_10
+    runtime_type: PYTHON_3_11
     platform: linux/amd64
     container_runtime: null
     source_path: <REPO_PATH>
@@ -23,7 +23,7 @@ agents:
       protocol_configuration:
         server_protocol: HTTP
       observability:
-        enabled: true
+        enabled: false
       lifecycle_configuration:
         idle_runtime_session_timeout: null
         max_lifetime: null
