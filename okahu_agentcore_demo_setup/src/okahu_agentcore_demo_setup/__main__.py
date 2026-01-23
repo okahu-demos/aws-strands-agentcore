@@ -37,8 +37,7 @@ def main():
     print("Okahu update completed!!")
 
     print(os.linesep + "Demo setup completed successfully.")
-    print("To test agent deployed via Agentcore CLI, run:")
-    print("agentcore invoke '{\"prompt\": \"<prompt>\"}'")
+    print("To test agent deployed via Agentcore CLI, run: agentcore invoke '{\"prompt\": \"<prompt>\"}'")
     print("See travel agent traces in Okahu, goto - " + get_trace_url())
 
 if __name__ == "__main__":
