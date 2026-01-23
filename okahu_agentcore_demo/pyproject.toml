@@ -1,0 +1,17 @@
+[build-system]
+requires = ["hatchling","hatch-build-scripts"]
+build-backend = "hatchling.build"
+
+[project]
+name = "okahu_agentcore_demo"
+version = "0.1.0"
+description = "Demo setup utilities for Okahu Strands AgentCore"
+requires-python = ">=3.11"
+dependencies = [
+    "requests"
+]
+[tool.hatch.build.targets.wheel]
+packages = ["src/okahu_agentcore_demo"]
+
+[project.scripts]
+okahu_agentcore_demo = "okahu_agentcore_demo.__main__:main"

@@ -3,3 +3,5 @@ strands-agents-tools
 bedrock-agentcore
 bedrock-agentcore-starter-toolkit
 monocle_apptrace
+monocle_test_tools
+./okahu_agentcore_demo/
