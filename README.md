@@ -2,8 +2,9 @@
 Agent example to provide travel booking implemented with AWS Strands
 
 ## Pre-requesits
-- AWS [Bedrock] with LLM deployed (https://docs.aws.amazon.com/bedrock/latest/userguide/getting-started.html).
-- AWS [Agentcore](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/agentcore-get-started-toolkit.html)
+- AWS [Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/getting-started.html) with foundational text LLMs enabled.
+- AWS [Agentcore](https://aws.amazon.com/bedrock/agentcore/)
+  - Verify that AgentCore is available in your tenant and region for deployment. Refer to Agentcore [FAQ](https://aws.amazon.com/bedrock/agentcore/faqs/)
 - AWS credentials- This value can be obtained by running AWS CLI commend aws sts get-session-token
 - Okahu cloud account
   - Signup on portal.okahu.co
@@ -12,16 +13,18 @@ Agent example to provide travel booking implemented with AWS Strands
   - goto https://portal.okahu.co/settings
   - Generate API key and copy it
 
-## Setup environment
-- Copy env.template to .env
-- Add following to .env
-  - AWS credentials
-  - AWS region of Bedrock
-  - Okahu API key
-- Install dependencies in your python environment
-  - `pip install -r requirements.txt`
-- Deploy agent to AWS Agentcore in the command line in the python environment
-  - `agentcore deploy --env AWS_ACCESS_KEY_ID=<key> --env AWS_SECRET_ACCESS_KEY=<secret> --env AWS_REGION=<region> --env MONOCLE_EXPORTER=okahu --env OKAHU_API_KEY=<okahu-api-key>`
+## Deploy demo agent to AWS Agentcore
+- Copy bedrock_agentcore_template.yaml to .bedrock_agentcore.yaml
+- Edit .bedrock_agentcore.yaml
+  - Replace `<REPO_PATH>` with absolute path where you have this demo stored.
+- Start a command line shell
+  - Install dependencies in your python environment
+    - `pip install -r requirements.txt`
+  - Deploy agent to AWS Agentcore
+    - `agentcore deploy --env MONOCLE_EXPORTER=okahu --env OKAHU_API_KEY=<okahu-api-key>`
+  - Verify that deploy is successful
+    - Run `agentcore status`
+    - Verify that the output contains message `Ready - Agent deployed and endpoint available1
 
 ## Test the agent
 - Goto Agentcore [Sandbox](https://us-east-1.console.aws.amazon.com/bedrock-agentcore/playground)
@@ -59,6 +62,9 @@ The steps below are needs to be done only for the fist time for the agent demo.
   - ![Traces ](media/traces.png)
 
 ## Try out tests framework example for the travel agent app
+- Copy env.template to .env
+- Add following to .env
+  - Okahu API key
 - Source python env
 - Install python dependencies
   - `pip install -r requirements.txt`

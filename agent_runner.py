@@ -9,8 +9,6 @@ app = BedrockAgentCoreApp()
 log = app.logger
 MEMORY_ID = os.getenv("BEDROCK_AGENTCORE_MEMORY_ID")
 REGION = os.getenv("AWS_REGION")
-from monocle_apptrace import setup_monocle_telemetry
-setup_monocle_telemetry(workflow_name = 'travel_agent_aws_agc')
 
 @app.entrypoint
 async def invoke(payload, context):
