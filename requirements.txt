@@ -1,7 +1,5 @@
-strands-agents
-strands-agents-tools
-bedrock-agentcore
 bedrock-agentcore-starter-toolkit
-monocle_apptrace
-monocle_test_tools
-./okahu_agentcore_demo/
+requests
+okahu_agentcore_demo_setup/.
+-r travel_agent/requirements.txt
+-r travel_agent/tests/requirements.txt
