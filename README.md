@@ -32,7 +32,8 @@ Agent example to provide travel booking implemented with AWS Strands
     - `python -m venv .venv`
   - Activate the virtual environment
     - On macOS/Linux: `source .venv/bin/activate`
-    - On Windows (Command Prompt): `.venv\Scripts\activate`
+    - On Windows (Git Bash): `source .venv/bin/activate`
+    - On Windows (Command Prompt): `.venv\Scripts\activate.bat`
     - On Windows (PowerShell): `.venv\Scripts\Activate.ps1`
   - Install dependencies in your python environment
     - `pip install -r requirements.txt`
@@ -85,7 +86,8 @@ The steps below need to be done only for the first time for the agent demo.
   - `python -m venv .venv`
 - Activate the virtual environment
   - On macOS/Linux: `source .venv/bin/activate`
-  - On Windows (Command Prompt): `.venv\Scripts\activate`
+  - On Windows (Git Bash): `source .venv/bin/activate`
+  - On Windows (Command Prompt): `.venv\Scripts\activate.bat`
   - On Windows (PowerShell): `.venv\Scripts\Activate.ps1`
 - Install python dependencies
   - `pip install -r requirements.txt`
