@@ -28,6 +28,10 @@ Agent example to provide travel booking implemented with AWS Strands
 - Edit .bedrock_agentcore.yaml
   - Replace `<REPO_PATH>` with absolute path where you have this demo stored.
 - Start a command line shell
+  - Create a Python virtual environment
+    - `python -m venv .venv`
+  - Activate the virtual environment
+    - `source .venv/bin/activate`
   - Install dependencies in your python environment
     - `pip install -r requirements.txt`
   - Deploy agent to AWS Agentcore
@@ -75,7 +79,10 @@ The steps below need to be done only for the first time for the agent demo.
 - Copy env.template to .env
 - Add following to .env
   - Okahu API key
-- Activate your Python environment
+- Create a Python virtual environment
+  - `python -m venv .venv`
+- Activate the virtual environment
+  - `source .venv/bin/activate`
 - Install python dependencies
   - `pip install -r requirements.txt`
 - Install python dependencies
