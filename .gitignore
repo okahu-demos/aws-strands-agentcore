@@ -81,5 +81,6 @@ Temporary Items
 *.sublime-workspace
 
 # Project specific
+.bedrock_agentcore*
 .bedrock_agentcore.yaml
 *.log
