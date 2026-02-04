@@ -1,4 +1,5 @@
 OKAHU_API_KEY=
 MONOCLE_EXPORTER=okahu,file
 MONOCLE_TEST_WORKFLOW_NAME=test_aws_agentcore_strands_travel_agent
+AGENTCORE_RUNTIME_URL=
 
