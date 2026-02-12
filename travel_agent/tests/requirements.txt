@@ -1,2 +1,2 @@
-pytest
-monocle_test_tools
+pytest==9.0.2
+monocle_test_tools==0.7.4

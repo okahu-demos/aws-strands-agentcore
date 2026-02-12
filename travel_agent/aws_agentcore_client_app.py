@@ -86,7 +86,7 @@ def main():
     print(f"Connected to: {client.runtime_url}")
     print(f"Session ID: {client.session_id}")
     print("=" * 50)
-
+    
     while True:
         try:
             user_input = input("\nWhat can I help you with today? (or 'exit' to quit): ")
