@@ -86,25 +86,20 @@ def main():
     print(f"Connected to: {client.runtime_url}")
     print(f"Session ID: {client.session_id}")
     print("=" * 50)
-    user_input = "Book a flight from San Jose to Seattle for 30 June 2026 and book hotel Marriott in Seattle for 2 nights for same date"
-    print("\nProcessing your request...")
-    response = client.invoke(user_input)
-    print(f"\nAgent: {response}")
     
-    # Uncomment below code for demo use.
-    # while True:
-    #     try:
-    #         user_input = input("\nWhat can I help you with today? (or 'exit' to quit): ")
-    #     except EOFError:
-    #         break
+    while True:
+        try:
+            user_input = input("\nWhat can I help you with today? (or 'exit' to quit): ")
+        except EOFError:
+            break
 
-    #     if user_input.lower() in ["exit", "quit", ""]:
-    #         print("Goodbye!")
-    #         break
+        if user_input.lower() in ["exit", "quit", ""]:
+            print("Goodbye!")
+            break
 
-    #     print("\nProcessing your request...")
-    #     response = client.invoke(user_input)
-    #     print(f"\nAgent: {response}")
+        print("\nProcessing your request...")
+        response = client.invoke(user_input)
+        print(f"\nAgent: {response}")
 
 if __name__ == "__main__":
     main()
