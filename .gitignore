@@ -84,3 +84,4 @@ Temporary Items
 .bedrock_agentcore*
 .bedrock_agentcore.yaml
 *.log
+.monocle*
