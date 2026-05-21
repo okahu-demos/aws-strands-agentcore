@@ -8,7 +8,7 @@ This demo includes a mock travel agent that accepts flight and travel booking re
 - AWS CLI
   - Install AWS CLI by following the [installation instructions](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 - AWS credentials
-  - This value can be obtained by running AWS CLI `aws sts get-session-token` in the Terminal. For more options please refer to AWS [instructions](https://docs.aws.amazon.com/cli/v1/userguide/cli-chap-authentication.html) on CLI auth.
+  - Obtain credentials by running AWS CLI `aws sts get-session-token` in the Terminal. For more options please refer to AWS [instructions](https://docs.aws.amazon.com/cli/v1/userguide/cli-chap-authentication.html) on CLI auth.
   - Use the two values from the output:
     ```json
     "Credentials": {
@@ -16,14 +16,17 @@ This demo includes a mock travel agent that accepts flight and travel booking re
         "SecretAccessKey": "<VALUE>"
     }
     ```
+  - Note: You can use these exact names (`AccessKeyId` and `SecretAccessKey`) in your `.env` file, or map them to standard AWS environment variable names (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`)
 
 - Okahu cloud account
   - Sign up on [Okahu portal](https://portal.okahu.co)
 - Okahu API key
-  - Go to https://portal.okahu.co/settings
+  - Go to [Okahu settings](https://portal.okahu.co/settings)
   - Generate API key and copy it
 
 ## Setup demo environment
+
+### 1. Create and activate virtual environment
 - Start a command line shell
   - Create a Python virtual environment
     - `python -m venv .venv`
@@ -34,7 +37,34 @@ This demo includes a mock travel agent that accepts flight and travel booking re
     - On Windows (PowerShell): `.venv\Scripts\Activate.ps1`
 - Install dependencies in your python environment
   - `pip install -r requirements.txt`
-- Run Okahu demo setup tool. This will deploy demo agent to AWS Agentcore and setup Okahu tenant for consuming traces from that deployment.
+
+### 2. Configure environment variables
+- Copy the environment template:
+  - On macOS/Linux: `cp env_template .env`
+  - On Windows: `copy env_template .env`
+- Edit `.env` and set the following values:
+
+#### Required for testing
+  - `OKAHU_API_KEY`: Your Okahu API key from portal settings
+  - `AWS_ACCESS_KEY_ID`: Your AWS access key ID
+  - `AWS_SECRET_ACCESS_KEY`: Your AWS secret access key
+  - `AWS_REGION`: Your AWS region (e.g., `us-east-1`)
+
+#### Alternative AWS credential names
+  - **Option**: Instead of `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` above, you can use:
+    - `AccessKeyId`: Copy directly from `aws sts get-session-token` output
+    - `SecretAccessKey`: Copy directly from `aws sts get-session-token` output
+  - Note: Use either the `AWS_*` variables OR these alternative names, not both
+
+#### Recommended for trace export
+  - `MONOCLE_EXPORTER`: Set to `okahu,file` to export traces to Okahu and local files
+  - `MONOCLE_TEST_WORKFLOW_NAME`: Set to `test_aws_agentcore_strands_travel_agent` to identify your test workflow
+
+#### For AgentCore deployment
+  - `AGENTCORE_RUNTIME_URL`: AgentCore runtime URL (typically set automatically during deployment)
+
+### 3. Deploy to AWS Agentcore
+- Run Okahu demo setup tool. This will deploy demo agent to AWS Agentcore and setup Okahu tenant for consuming traces from that deployment
   - ```okahu_agentcore_demo_setup --key <OKAHU-API-KEY>```
   - Verify that you see `Demo setup completed successfully` at the end
 
@@ -67,6 +97,11 @@ This demo includes a mock travel agent that accepts flight and travel booking re
     - On Windows (Git Bash): `source .venv/bin/activate`
     - On Windows (Command Prompt): `.venv\Scripts\activate.bat`
     - On Windows (PowerShell): `.venv\Scripts\Activate.ps1`
+- Prerequisites for testing
+    - Ensure your `.env` file contains:
+    - **Required**: `AWS_ACCESS_KEY_ID` (or `AccessKeyId`), `AWS_SECRET_ACCESS_KEY` (or `SecretAccessKey`), `OKAHU_API_KEY`
+    - **Recommended**: `MONOCLE_EXPORTER=okahu,file`, `MONOCLE_TEST_WORKFLOW_NAME=test_aws_agentcore_strands_travel_agent`
+
 - Source python env
 - Install python dependencies
   - `pip install -r requirements.txt`
