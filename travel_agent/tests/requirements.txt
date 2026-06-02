@@ -1,2 +1,2 @@
 pytest==9.0.2
-monocle_test_tools==0.8.1
+monocle_test_tools==0.8.2
