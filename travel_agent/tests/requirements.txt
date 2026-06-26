@@ -1,12 +1,2 @@
 pytest==9.0.2
-monocle-test-tools==0.8.5
-# opentelemetry-sdk 1.43.0 freezes span attributes in Span.end(), which breaks
-# monocle-test-tools' post-test span tagging (TypeError on span._attributes assignment).
-# Pin to 1.42.0 until monocle-test-tools handles immutable attributes.
-opentelemetry-api==1.42.0
-opentelemetry-sdk==1.42.0
-opentelemetry-proto==1.42.0
-opentelemetry-exporter-otlp-proto-common==1.42.0
-opentelemetry-exporter-otlp-proto-http==1.42.0
-opentelemetry-instrumentation==0.63b0
-opentelemetry-semantic-conventions==0.63b0
+monocle-test-tools==0.8.6
