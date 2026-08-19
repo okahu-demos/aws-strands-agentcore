@@ -1,0 +1,7 @@
+{
+    "python.testing.pytestArgs": [
+        "travel_agent/tests"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
+}

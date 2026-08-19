@@ -69,7 +69,6 @@ Temporary Items
 .apdisk
 
 # IDEs
-.vscode/
 .idea/
 *.swp
 *.swo
