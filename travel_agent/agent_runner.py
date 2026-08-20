@@ -1,12 +1,10 @@
-from bedrock_agentcore.memory.integrations.strands.config import AgentCoreMemoryConfig, RetrievalConfig
+from bedrock_agentcore.memory.integrations.strands.config import AgentCoreMemoryConfig
 from bedrock_agentcore.memory.integrations.strands.session_manager import AgentCoreMemorySessionManager
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
 from travel_agent import setup_agents
 import os
-import logging
 
 app = BedrockAgentCoreApp()
-log = app.logger
 MEMORY_ID = os.getenv("BEDROCK_AGENTCORE_MEMORY_ID")
 REGION = os.getenv("AWS_REGION")
 

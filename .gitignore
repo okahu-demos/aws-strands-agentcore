@@ -48,6 +48,8 @@ venv.bak/
 .env
 .env.local
 .env.*.local
+# Monocle reads this for OKAHU_API_KEY, so it holds a live key.
+.env.monocle
 
 # macOS
 .DS_Store

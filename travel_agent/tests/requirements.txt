@@ -1,2 +1,5 @@
 pytest==9.0.2
-monocle-test-tools==0.8.11
+monocle-test-tools==0.8.13
+# The `agentcore` runner calls the deployed agent over the AWS API.
+boto3>=1.40.0
+python-dotenv>=1.0.0
