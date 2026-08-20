@@ -2,7 +2,7 @@ import os
 import json
 import boto3
 import uuid
-from typing import Dict, Any, Optional
+from typing import Optional
 import dotenv
 dotenv.load_dotenv()
 

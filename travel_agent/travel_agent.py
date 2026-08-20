@@ -1,15 +1,10 @@
-from datetime import datetime, timedelta
-import json
 import os
-import time
-from uuid import UUID
 import dotenv
 dotenv.load_dotenv()
 from strands_tools.code_interpreter import AgentCoreCodeInterpreter
 
 from strands import tool
 from strands.models.bedrock import BedrockModel
-from strands.session.file_session_manager import FileSessionManager
 import boto3
 from strands import Agent
 
@@ -78,8 +73,4 @@ if __name__ == "__main__":
             print("Exiting the Travel scores agent. Goodbye!")
             break
         response = travel_agent(prompt=user_request)
-        #get list of all environment variables
-        envs:str = ""
-
-
-        print(response.message['content'][0]['text'] + envs)
+        print(response.message['content'][0]['text'])
